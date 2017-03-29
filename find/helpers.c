@@ -40,19 +40,21 @@ bool search(int value, int values[], int n)
  */
 void sort(int values[], int n)
 {
-    int swap,i,j;
+    int swap,i,j,min;
     
     for(i=0;i<n;i++)
     {
-        for(j=i;j<n-1;j++)
-        {
-            if(values[j+1]<values[j])
-            {
-                swap=values[j];
-                values[j]=values[j+1];
-                values[j+1]=swap;
-            }
-        }
+       min=i;
+       for(j=i+1;j<n;j++)
+       {
+           if(values[min]>=values[j])
+           {
+               min=j;
+           }
+       }
+       swap=values[i];
+       values[i]=values[min];
+       values[min]=swap;
     }
     return;
 }
