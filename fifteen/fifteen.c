@@ -114,7 +114,7 @@ int main(int argc, string argv[])
         fflush(file);
 
         // move if possible, else report illegality
-        if (!move(tile))
+        if (!move(tile)) 
         {
             printf("\nIllegal move.\n");
             usleep(500000);
@@ -127,7 +127,7 @@ int main(int argc, string argv[])
     // close log
     fclose(file);
 
-    // success
+    // success   
     return 0;
 }
 
@@ -229,7 +229,64 @@ void draw(void)
 bool move(int tile)
 {
     // TODO
-    int i,j;
+    int i,j,row,col;
+    
+    if(tile<1||tile>=d*d)
+    {
+        return false;
+    }
+    for(i=0;i<d;i++)
+    {
+        for(j=0;j<d;j++)
+        {
+            if(tile==board[i][j])
+            {
+                row=i;
+                col=j;
+                break;
+            }
+        }
+    }
+    
+    if(row!=0)
+    {
+        if(board[row-1][col]==0)
+        {
+            board[row-1][col]=board[row][col];
+            board[row][col]=0;
+            return true;
+        }
+    }
+    
+    if(col!=0)
+    {
+        if(board[row][col-1]==0)
+        {
+            board[row][col-1]=board[row][col];
+            board[row][col]=0;
+            return true;
+        }
+    }
+    
+    if(row!=d-1)
+    {
+        if(board[row+1][col]==0)
+        {
+            board[row+1][col]=board[row][col];
+            board[row][col]=0;
+            return true;
+        }
+    }
+    
+    if(col!=d-1)
+    {
+        if(board[row][col+1]==0)
+        {
+            board[row][col+1]=board[row][col];
+            board[row][col]=0;
+            return true;
+        }
+    }
     
     return false;
 }
