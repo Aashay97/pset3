@@ -156,7 +156,22 @@ void greet(void)
  */
 void init(void)
 {
-    // TODO
+    // Initializing the board
+    int i,j,n=d*d;
+    
+    for(i=0;i<d;i++)
+    {
+        for(j=0;j<d;j++)
+        {
+            board[i][j]=n-1;
+            n--;
+        }
+    }
+    if(d%2==0)
+    {
+        board[d-1][d-2]=2;
+        board[d-1][d-3]=1;
+    }
 }
 
 /**
@@ -164,7 +179,47 @@ void init(void)
  */
 void draw(void)
 {
-    // TODO
+    // draw the board
+    int i,j;
+
+    char hyp[5*d+1];
+    
+    for(i=0;i<5*d;i++)
+    {
+        if(i%5==0)
+        {
+            hyp[i]=' ';
+        }
+        else
+        {
+            hyp[i]='_';
+        }
+    }
+    hyp[i]='\0';
+    
+    puts(hyp);
+    printf("\n");
+    
+    for(i=0;i<d;i++)
+    {
+        printf("|");
+        
+        for(j=0;j<d;j++)
+        {
+            if(board[i][j]==0)
+            {
+                printf("  _ |");
+            }
+            else
+            {
+                printf(" %2i |",board[i][j]);
+            }
+        }
+        
+        printf("\n");
+        puts(hyp);
+        printf("\n");
+    }
 }
 
 /**
@@ -174,6 +229,8 @@ void draw(void)
 bool move(int tile)
 {
     // TODO
+    int i,j;
+    
     return false;
 }
 
