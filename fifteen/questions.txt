@@ -1,4 +1,4 @@
-0. TODO
-1. TODO
-2. TODO
-3. TODO
+0. from 3x3 to 9x9
+1. The board is represented with a 2D Array.
+2. The function greet() is called.
+3. The functions init(),draw(),move() & won() need to be implemanted.
